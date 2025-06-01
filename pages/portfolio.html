@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio | Jaiho TechServe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #0f172a;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .sub-brand {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        .sub-brand a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sub-brand a:hover {
+            color: #00bcd4;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: rgba(0, 188, 212, 0.2);
+            color: #00bcd4;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .portfolio-hero {
+            height: 60vh;
+            background: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .portfolio-hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .portfolio-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .portfolio-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        /* Portfolio Filter */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #00bcd4;
+            color: white;
+            border-color: #00bcd4;
+            transform: translateY(-2px);
+        }
+
+        /* Portfolio Grid */
+        .portfolio-section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-container {
+            padding: 0 2rem;
+        }
+
+        .portfolio-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .category-title h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-title i {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #00bcd4, #2196f3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-image {
+            height: 220px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #00bcd4;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        .portfolio-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 188, 212, 0.1);
+            color: #00bcd4;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .portfolio-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .portfolio-links a {
+            flex: 1;
+            text-align: center;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .demo-link {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .demo-link:hover {
+            background: #00a5c0;
+        }
+
+        .code-link {
+            border: 1px solid #00bcd4;
+            color: #00bcd4;
+        }
+
+        .code-link:hover {
+            background: rgba(0, 188, 212, 0.1);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+            background: white;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00bcd4, #2196f3);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-section p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #00bcd4, #2196f3);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #00bcd4;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #00bcd4;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .back-to-main {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #00bcd4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #0f172a;
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 2rem;
+                border-radius: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .portfolio-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .portfolio-hero p {
+                font-size: 1rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="techserve-logo.png" alt="Jaiho TechServe Logo">
+                <div class="sub-brand">A Division of <a href="https://jaihodigital.com">Jaiho Digital</a></div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="portfolio-hero">
+        <div class="portfolio-hero-content">
+            <h1>Our Portfolio</h1>
+            <p>Explore our successful projects across all IT service categories</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Filter -->
+    <div class="portfolio-filter">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="website">Websites</button>
+        <button class="filter-btn" data-filter="app">Mobile Apps</button>
+        <button class="filter-btn" data-filter="software">Custom Software</button>
+        <button class="filter-btn" data-filter="ai">AI Integration</button>
+        <button class="filter-btn" data-filter="it">IT Solutions</button>
+        <button class="filter-btn" data-filter="data">Data Recovery</button>
+    </div>
+
+    <!-- Portfolio Sections -->
+    <div class="portfolio-section">
+        <div class="portfolio-container">
+            <!-- Websites Category -->
+            <div class="portfolio-category" id="website">
+                <div class="category-title">
+                    <i class="fas fa-globe"></i>
+                    <h2>Website Development</h2>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="website">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="E-commerce Website">
+                            <span class="portfolio-badge">E-commerce</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Sharma Grocers Online Store</h3>
+                            <p>Complete e-commerce solution for a local grocery store with inventory management and online payment integration.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Razorpay</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Live Demo</a>
+                                <a href="#" class="code-link">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="website">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Restaurant Website">
+                            <span class="portfolio-badge">Restaurant</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Spice Route Restaurant</h3>
+                            <p>Modern website with online reservation system, menu display, and food ordering capabilities.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">WordPress</span>
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">jQuery</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Live Demo</a>
+                                <a href="#" class="code-link">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="website">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Educational Website">
+                            <span class="portfolio-badge">Education</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Bright Minds Learning Center</h3>
+                            <p>Educational portal with course management, student registration, and payment processing.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Stripe</span>
+                                <span class="tech-tag">AWS</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Live Demo</a>
+                                <a href="#" class="code-link">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Apps Category -->
+            <div class="portfolio-category" id="app">
+                <div class="category-title">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h2>Mobile Applications</h2>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="app">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Laundry App">
+                            <span class="portfolio-badge">Utility</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>QuickClean Laundry App</h3>
+                            <p>Mobile application for scheduling laundry pickups, tracking orders, and making payments.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">Google Maps API</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Play Store</a>
+                                <a href="#" class="code-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="app">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fitness App">
+                            <span class="portfolio-badge">Health & Fitness</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>FitTrack Pro</h3>
+                            <p>Fitness tracking application with workout plans, nutrition logging, and progress analytics.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">React Native</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">HealthKit</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">App Store</a>
+                                <a href="#" class="code-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="app">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Inventory App">
+                            <span class="portfolio-badge">Business</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>ShopSmart Inventory</h3>
+                            <p>Inventory management solution for small retailers with barcode scanning and sales tracking.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">Kotlin</span>
+                                <span class="tech-tag">Room DB</span>
+                                <span class="tech-tag">ZXing</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Play Store</a>
+                                <a href="#" class="code-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Software Category -->
+            <div class="portfolio-category" id="software">
+                <div class="category-title">
+                    <i class="fas fa-laptop-code"></i>
+                    <h2>Custom Software</h2>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="software">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Accounting Software">
+                            <span class="portfolio-badge">Finance</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>BizFinance Manager</h3>
+                            <p>Custom accounting software tailored for small businesses with GST compliance features.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">Electron</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">SQLite</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Download</a>
+                                <a href="#" class="code-link">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="software">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="POS System">
+                            <span class="portfolio-badge">Retail</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>RetailPro POS</h3>
+                            <p>Point of Sale system with inventory management, customer loyalty programs, and sales analytics.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">JavaFX</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Download</a>
+                                <a href="#" class="code-link">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Integration Category -->
+            <div class="portfolio-category" id="ai">
+                <div class="category-title">
+                    <i class="fas fa-robot"></i>
+                    <h2>AI Integration</h2>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="ai">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1677442135136-760c813a743f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Chatbot">
+                            <span class="portfolio-badge">Customer Service</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>SPA AI Chatbot</h3>
+                            <p>Intelligent conversational AI for handling customer inquiries with natural language processing.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">NLTK</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Live Demo</a>
+                                <a href="#" class="code-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="ai">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1677442135139-345e01e3b5e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Vision AI">
+                            <span class="portfolio-badge">Computer Vision</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Visio AI</h3>
+                            <p>Advanced computer vision platform for real-time image analysis and object recognition.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">OpenCV</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">Flask</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Live Demo</a>
+                                <a href="#" class="code-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IT Solutions Category -->
+            <div class="portfolio-category" id="it">
+                <div class="category-title">
+                    <i class="fas fa-network-wired"></i>
+                    <h2>IT Solutions</h2>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="it">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Network Setup">
+                            <span class="portfolio-badge">Infrastructure</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Small Business Network</h3>
+                            <p>Complete network infrastructure setup for a 20-employee office with secure remote access.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">Cisco</span>
+                                <span class="tech-tag">Ubiquiti</span>
+                                <span class="tech-tag">VPN</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="it">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Cloud Migration">
+                            <span class="portfolio-badge">Cloud</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Cloud Migration</h3>
+                            <p>Migration of legacy systems to cloud infrastructure with improved security and scalability.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Kubernetes</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Recovery Category -->
+            <div class="portfolio-category" id="data">
+                <div class="category-title">
+                    <i class="fas fa-database"></i>
+                    <h2>Data Recovery</h2>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="data">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Data Recovery">
+                            <span class="portfolio-badge">Emergency</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Financial Data Recovery</h3>
+                            <p>Recovered critical accounting data from a failed RAID array for a local accounting firm.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">RAID</span>
+                                <span class="tech-tag">Forensic Tools</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="data">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Database Recovery">
+                            <span class="portfolio-badge">Database</span>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Corrupted Database Recovery</h3>
+                            <p>Restored a corrupted MySQL database for an e-commerce client with zero data loss.</p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Data Forensics</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="#" class="demo-link">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Small Businesses Helped</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support Available</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Whether you need a website, mobile app, custom software, or IT support, our team is ready to help bring your vision to life.</p>
+            <a href="index.html#contact" class="cta-btn">Get a Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="techserve-logo-white.png" alt="Jaiho TechServe Logo">
+                </div>
+                <p>Jaiho TechServe is the IT services division of Jaiho Digital, dedicated to helping small businesses thrive through technology.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Website Development</a></li>
+                    <li><a href="#">Mobile App Development</a></li>
+                    <li><a href="#">Custom Software</a></li>
+                    <li><a href="#">AI Integration</a></li>
+                    <li><a href="#">IT Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Community Forum</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Free Resources</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Jaiho TechServe. A Division of Jaiho Digital. All rights reserved.</p>
+            <a href="https://jaihodigital.com" class="back-to-main">Back to Jaiho Digital</a>
+        </div>
+    </footer>
+
+    <script>
+        // Filter Portfolio Items
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                // Filter items
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Scroll to the relevant category if not "all"
+                if (filterValue !== 'all') {
+                    const categorySection = document.getElementById(filterValue);
+                    categorySection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Hamburger menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('hamburger').classList.remove('active');
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Simple animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.portfolio-item, .category-title');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animated elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.portfolio-item, .category-title');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'all 0.6s ease';
+            });
+            
+            // Trigger first check
+            animateOnScroll();
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
