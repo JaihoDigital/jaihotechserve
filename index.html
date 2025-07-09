@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaiho TechServe - IT Solutions for Businesses</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/favicon-32x32.png" type="image/png">
     <style>
         /* Base Styles */
         * {
@@ -1023,41 +1024,48 @@
         </div>
         <div class="contact-container">
             <div class="contact-form">
-                <form id="requestForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="business">Business Name</label>
-                        <input type="text" id="business" name="business" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Needed</label>
-                        <select id="service" name="service" required>
-                            <option value="">Select a service</option>
-                            <option value="website">Website Development</option>
-                            <option value="app">Mobile App Development</option>
-                            <option value="software">Custom Software</option>
-                            <option value="ai">AI Integration</option>
-                            <option value="it">IT Support</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Tell us about your project</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Request</button>
-                </form>
+<form id="requestForm"
+      action="https://docs.google.com/forms/d/e/1FAIpQLSfFdt-85oY0Jtl3V1liTU0OvaP7-jC9o844pNrOEqWENija_w/formResponse"
+      method="POST"
+      target="hidden_iframe"
+      onsubmit="submitted=true;">
+    <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="entry.10929293" required>
+    </div>
+    <div class="form-group">
+        <label for="business">Business Name</label>
+        <input type="text" id="business" name="entry.2041007777" required>
+    </div>
+    <div class="form-group">
+        <label for="service">Service Needed</label>
+        <select id="service" name="entry.89279792" required>
+            <option value="">Select a service</option>
+            <option value="Website Development">Website Development</option>
+            <option value="Mobile App Development">Mobile App Development</option>
+            <option value="Custom Software">Custom Software</option>
+            <option value="AI Integration">AI Integration</option>
+            <option value="IT Support">IT Support</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="entry.564740392" required>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="entry.1896008338">
+    </div>
+    <div class="form-group">
+        <label for="message">Tell us about your project</label>
+        <textarea id="message" name="entry.773882074" rows="4"></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Send Request</button>
+</form>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
             </div>
             <div class="contact-info">
                 <h3>Our Offices</h3>
@@ -1158,6 +1166,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="footer-bottom">
             <p>&copy; 2025 Jaiho TechServe. A Division of Jaiho Digital. All rights reserved.</p>
             <a href="https://jaiho-digital.onrender.com" class="back-to-main">Back to Jaiho Digital</a>
@@ -1205,32 +1214,15 @@
             // });
         });*/
 
-       document.getElementById('requestForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    const data = {};
-    formData.forEach((value, key) => {
-        data[key] = value;
+       let submitted = false;
+    document.getElementById("requestForm").addEventListener("submit", function (e) {
+        setTimeout(function () {
+            if (submitted) {
+                alert("Thank you! We'll get in touch soon.");
+                document.getElementById("requestForm").reset();
+            }
+        }, 500);
     });
-
-    fetch('https://script.google.com/macros/s/AKfycbwx5WaosSSTkSsrCM8XfvLHGbvtAU8pNzol9MeGaNbrIxNuKF5jv_ZboNSaxmydKVn2/exec', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    })
-    .then(res => res.json())
-    .then(response => {
-        alert("Thank you! Your request has been submitted.");
-        document.getElementById('requestForm').reset();
-    })
-    .catch(err => {
-        console.error('Error!', err.message);
-        alert("There was an error. Please try again.");
-    });
-});
 
         // Hamburger menu toggle
         document.getElementById('hamburger').addEventListener('click', function() {
