@@ -340,6 +340,23 @@
             font-size: 3rem;
         }
 
+        .portfolio-image {
+    position: relative;
+    overflow: visible; /* allow image to grow outside */
+    z-index: 1;
+}
+
+.portfolio-image img {
+    transition: transform 0.4s ease;
+    position: relative;
+    z-index: 2; /* bring the image on top */
+}
+
+.portfolio-image img:hover {
+    transform: scale(1.2); /* increase for more dramatic effect */
+}
+
+
         .portfolio-content {
             padding: 1.5rem;
         }
@@ -718,6 +735,41 @@
         .section:nth-child(even) {
             background: white;
         }
+
+        .view-more-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.view-more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-more-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.arrow {
+    
+    transition: transform 0.3s ease;
+}
+
+.view-more-button:hover .arrow {
+    transform: translate(3px, -3px); /* creates diagonal movement */
+}
+
     </style>
 </head>
 <body>
@@ -726,7 +778,7 @@
         <div class="nav-container">
             <div class="logo">
                 <img src="images/jaiho_techserve_logo.jpeg" style="border-radius: 20px;" alt="Jaiho TechServe Logo">
-                <div class="sub-brand">A Division of <a href="https://jaihodigital.com">Jaiho Digital</a></div>
+                <div class="sub-brand">A Division of <a href="https://jaiho-digital.onrender.com" target="_blank">Jaiho Digital</a></div>
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
@@ -856,53 +908,68 @@
     <section id="portfolio" class="section">
         <div class="section-title">
             <h2>Our Portfolio</h2>
-            <p>See examples of our work for small businesses</p>
+            <p>See examples of our work for organizations & businesses</p>
         </div>
         <div class="portfolio-grid">
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <i class="fas fa-store"></i>
+                    <img src="images/portfolio_assets/telecom_website.png" alt="Telecom Shop Icon" style="width: 400px; height: 200px;" />
+                    <!--<i class="fas fa-store"></i>-->
                 </div>
                 <div class="portfolio-content">
                     <h3>Telecom Shop</h3>
                     <p>Telecom Website which includes Smartphones, Mobile Repairing and Accessories.</p>
                     <div class="portfolio-links">
-                        <a href="#" class="demo-link">Live Demo</a>
-                        <a href="#" class="code-link">View Code</a>
+                        
+                        <!--<a href="#" class="demo-link">Live Demo</a>
+                        <a href="#" class="code-link">View Code</a>-->
                     </div>
                 </div>
             </div>
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <i class="fas fa-utensils"></i>
+                    <img src="images/portfolio_assets/Dairy_Delights.png" alt="Dairy Shop Icon" style="width: 400px; height: 200px;"/>
+                    <!--<i class="fas fa-utensils"></i>-->
+                    <!--<i class="fas fa-cow"></i>-->
+                    
                 </div>
                 <div class="portfolio-content">
-                    <h3>Restaurant Booking</h3>
-                    <p>Online reservation system with menu display for a family restaurant.</p>
+                    <h3>Dairy Delights</h3>
+                    <p>Dairy Delights - Online presence for Dairy Farmers.</p>
                     <div class="portfolio-links">
-                        <a href="#" class="demo-link">Live Demo</a>
-                        <a href="#" class="code-link">View Code</a>
+                        <!--<a href="#" class="demo-link">Live Demo</a>
+                        <a href="#" class="code-link">View Code</a>--->
                     </div>
                 </div>
             </div>
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <i class="fas fa-cut"></i>
+                    <!--<i class="fas fa-cut"></i>-->
+                    <img src="images/portfolio_assets/its_arc_ed_tech_website.png" alt="Ed-tech Icon" style="width: 400px; height: 200px;"/>
                 </div>
                 <div class="portfolio-content">
-                    <h3>Salon Management</h3>
-                    <p>Appointment scheduling and staff management system for a local salon.</p>
+                    <h3>Educational Hub</h3>
+                    <p>Ed-Tech Site - Explore free resources, courses and learning.</p>
                     <div class="portfolio-links">
-                        <a href="#" class="demo-link">Live Demo</a>
-                        <a href="#" class="code-link">View Code</a>
+
+                        <!--<a href="#" class="demo-link">Live Demo</a>
+                        <a href="#" class="code-link">View Code</a>--->
                     </div>
                 </div>
             </div>
+            <div class="view-more-container">
+    <a href="pages/portfolio.html" class="view-more-button">
+        View More Projects
+        <i class="fas fa-arrow-up-right-from-square arrow"></i>
+    </a>
+</div>
+
+
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="section">
+    <section class="section">                                                                                                                                                                              
         <div class="section-title">
             <h2>What Our Clients Say</h2>
             <p>Hear from small business owners we've helped</p>
@@ -910,13 +977,14 @@
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    "TechServe built us a beautiful website that has doubled our online orders. Their team was patient with our limited tech knowledge and delivered exactly what we needed."
+                    "Jaiho TechServe build my website for my telecom shop for free. The website has doubled my online orders 
+                    and increses the presence. Their skills are best and delivered exactly what we needed."
                 </div>
                 <div class="testimonial-author">
                     <div class="author-avatar">RS</div>
                     <div class="author-info">
-                        <h4>Raj Sharma</h4>
-                        <p>Owner, Sharma Grocers</p>
+                        <h4>Rajdeep Singh</h4>
+                        <p>Owner, Raj Telecoms</p>
                     </div>
                 </div>
             </div>
@@ -925,22 +993,22 @@
                     "As a small bakery, we couldn't afford expensive IT services. TechServe's free consultation helped us set up an online ordering system that's transformed our business."
                 </div>
                 <div class="testimonial-author">
-                    <div class="author-avatar">PM</div>
+                    <div class="author-avatar">PS</div>
                     <div class="author-info">
-                        <h4>Priya Malhotra</h4>
-                        <p>Owner, Sweet Delights Bakery</p>
+                        <h4>Priya Sharma</h4>
+                        <p>Owner, Sharma Bakery</p>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    "The mobile app TechServe developed for our laundry service has made scheduling pickups so easy for our customers. Their support team is always available when we need help."
+                    "The mobile app TechServe developed for our food delivery service has made scheduling pickups so easy for our customers. Their support team is always available when we need help."
                 </div>
                 <div class="testimonial-author">
-                    <div class="author-avatar">AK</div>
+                    <div class="author-avatar">GS</div>
                     <div class="author-info">
-                        <h4>Amit Kumar</h4>
-                        <p>Owner, QuickClean Laundry</p>
+                        <h4>Gurdeep Singh</h4>
+                        <p>Owner, Tuhada Pizza</p>
                     </div>
                 </div>
             </div>
@@ -998,22 +1066,22 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <p><strong>Headquarters</strong></p>
-                            <p>123 Tech Park Road, Ludhiana</p>
-                            <p>Punjab 141001, India</p>
+                            <p>Jaiho Market Tehsil Road</p>
+                            <p>Tanda Urmar, Punjab 144204</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
                         <div>
                             <p><strong>Phone</strong></p>
-                            <p>+91 98765 43210</p>
+                            <p>+91 7528953747</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <p><strong>Email</strong></p>
-                            <p>contact@jaihotechserve.com</p>
+                            <p>jaihodigital@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1028,9 +1096,9 @@
                 <h3>Follow Us</h3>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://huggingface.co/jaiholabs"><i class="fas fa-robot"></i></a>
+                    <a href="https://github.com/Jaiho-Digital"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/jaihodigital/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -1046,9 +1114,9 @@
                 <p>Jaiho TechServe is the IT services division of Jaiho Digital, dedicated to helping small businesses thrive through technology.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://huggingface.co/jaiholabs"><i class="fas fa-robot"></i></a>
+                    <a href="https://github.com/Jaiho-Digital"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/jaihodigital/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="footer-links">
@@ -1092,7 +1160,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Jaiho TechServe. A Division of Jaiho Digital. All rights reserved.</p>
-            <a href="https://jaihodigital.com" class="back-to-main">Back to Jaiho Digital</a>
+            <a href="https://jaiho-digital.onrender.com" class="back-to-main">Back to Jaiho Digital</a>
         </div>
     </footer>
 
@@ -1103,7 +1171,7 @@
 
     <script>
         // Form submission handler
-        document.getElementById('requestForm').addEventListener('submit', function(e) {
+        /*document.getElementById('requestForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Get form data
@@ -1135,7 +1203,34 @@
             //     console.error('Error:', error);
             //     alert('There was an error submitting your request. Please try again.');
             // });
-        });
+        });*/
+
+       document.getElementById('requestForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    fetch('https://script.google.com/macros/s/AKfycbwx5WaosSSTkSsrCM8XfvLHGbvtAU8pNzol9MeGaNbrIxNuKF5jv_ZboNSaxmydKVn2/exec', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(res => res.json())
+    .then(response => {
+        alert("Thank you! Your request has been submitted.");
+        document.getElementById('requestForm').reset();
+    })
+    .catch(err => {
+        console.error('Error!', err.message);
+        alert("There was an error. Please try again.");
+    });
+});
 
         // Hamburger menu toggle
         document.getElementById('hamburger').addEventListener('click', function() {
